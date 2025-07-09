@@ -1,6 +1,7 @@
 # Advent of Code solutions in Lua
 
-This is my solutions for the [Advent of Code](https://adventofcode.com).
+My solutions for the [Advent of Code](https://adventofcode.com) puzzles.<br>
+I created a small script to easily run the different solutions and create new files for new puzzles etc.
 
 ### How-to
 
@@ -45,4 +46,21 @@ And then you can run the following command from any directory:
 
 ```
 aoc run 2024 04 1
+```
+
+### Project structure
+
+```
+.
+├── events
+│   └── 2024
+│       └── 04
+│           ├── input.test.txt
+│           ├── input.txt
+│           └── puzzle.lua
+├── main.lua
+├── README.md
+└── util
+    ├── file.lua
+    └── types.lua
 ```
