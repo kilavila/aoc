@@ -13,13 +13,13 @@ Then run the solution or test the solution:
 lua main.lua <mode> <year> <day> <part>
 ```
 
-Mode:<br>
-    - `run` will run the actual input
-    - `test` will run the small test input
-    - `new` will create files for a new event
+Mode:
+- `run` will run the actual input
+- `test` will run the small test input
+- `new` will create files for a new event
 
-Part:<br>
-    - `1` or `2`, which puzzle part to run/test
+Part:
+- `1` or `2`, which puzzle part to run/test
 
 Example:
 
