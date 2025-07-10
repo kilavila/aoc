@@ -1,5 +1,7 @@
 ---@class Puzzle
-local M = {}
+local M = {
+	title = "Day 1: Historian Hysteria",
+}
 M.__index = M
 
 function M:new()
@@ -68,4 +70,3 @@ function M:part_2(input)
 end
 
 return M
-

@@ -42,7 +42,7 @@ function FileModule:new_event(year, day)
 	path = path .. "/" .. day
 	if not lfs.symlinkattributes(path, "mode") then
 		lfs.mkdir(path)
-		print("Created directory: " .. path)
+		print("Created directory -> " .. path)
 	end
 
 	path = path .. "/"
@@ -51,7 +51,7 @@ function FileModule:new_event(year, day)
 	if file then
 		file:write("Paste puzzle input here")
 		file:close()
-		print("Created file: " .. file_path)
+		print("Created file      -> " .. file_path)
 	end
 
 	file_path = path .. "input.test.txt"
@@ -59,14 +59,16 @@ function FileModule:new_event(year, day)
 	if file then
 		file:write("Paste puzzle test input here")
 		file:close()
-		print("Created file: " .. file_path)
+		print("Created file      -> " .. file_path)
 	end
 
 	file_path = path .. "puzzle.lua"
 	file = io.open(file_path, "w")
 	if file then
 		local puzzle_module = [[---@class Puzzle
-local M = {}
+local M = {
+	title = "Puzzle title",
+}
 M.__index = M
 
 function M:new()
@@ -89,7 +91,7 @@ end
 return M]]
 		file:write(puzzle_module)
 		file:close()
-		print("Created file: " .. file_path)
+		print("Created file      -> " .. file_path)
 	end
 end
 

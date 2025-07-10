@@ -54,8 +54,22 @@ if not puzzle then
 	os.exit(1)
 end
 
+print()
+print("\27[32mAdvent of Code")
+print("\27[30m{'year':\27[32m" .. year .. "\27[30m}\27[0m")
+print()
+print("--- " .. puzzle.title .. " ---")
+print()
+
 if part == "1" or part == nil then
+	local time = {
+		["start"] = os.clock(),
+		["end"] = nil,
+	}
+
 	answers = puzzle:part_1(input)
+
+	time["end"] = os.clock()
 
 	if not answers then
 		print("[Error] Puzzle solution 1 failed, answer not found!")
@@ -63,18 +77,25 @@ if part == "1" or part == nil then
 	end
 
 	print()
-	print("[Puzzle 1 Solution]:")
+	print("---\27[34m Part One \27[0m--- [\27[31m" .. (time["end"] - time["start"]) * 1000 .. "ms\27[0m]")
 	print()
 
 	for _, answer in pairs(answers) do
-		print(string.format("  %s", answer))
+		print(string.format("  \27[33m%s\27[0m", answer))
 	end
 
 	print()
 end
 
 if part == "2" or part == nil then
+	local time = {
+		["start"] = os.clock(),
+		["end"] = nil,
+	}
+
 	answers = puzzle:part_2(input)
+
+	time["end"] = os.clock()
 
 	if not answers then
 		print("[Error] Puzzle solution 2 failed, answer not found!")
@@ -82,11 +103,11 @@ if part == "2" or part == nil then
 	end
 
 	print()
-	print("[Puzzle 2 Solution]:")
+	print("---\27[34m Part Two \27[0m--- [\27[31m" .. (time["end"] - time["start"]) * 1000 .. "ms\27[0m]")
 	print()
 
 	for _, answer in pairs(answers) do
-		print(string.format("  %s", answer))
+		print(string.format("  \27[33m%s\27[0m", answer))
 	end
 
 	print()
