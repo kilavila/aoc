@@ -39,7 +39,7 @@ end
 function M:part_2(input)
 	local total_sum = 0
 
-	input = string.gsub(input, "don't%(%).-do%(%)", "TESTING")
+	input = string.gsub(input, "don't%(%).-do%(%)", "")
 
 	for match in string.gmatch(input, "mul%(%d%d?%d?%,%d%d?%d?%)") do
 		local sum = mul_handler(match)
