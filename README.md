@@ -21,6 +21,7 @@ Mode:
 
 Part:
 - `1` or `2`, which puzzle part to run/test
+- If no part is specified it will run both
 
 Example:
 
