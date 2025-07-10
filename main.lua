@@ -5,11 +5,7 @@ local FileModule = require("util.file")
 
 local mode, year, day, part = arg[1], arg[2], arg[3], arg[4]
 
-if not part then
-	part = "1"
-end
-
-if not mode or not year or not day or not part then
+if not mode or not year or not day then
 	print("[Error] Missing argument!")
 	print("Usage: aoc <type> <year> <day> <part>")
 	print("Example: aoc test 2024 04 1")
@@ -54,27 +50,44 @@ local answers = nil
 puzzle = current_event.puzzle:new()
 
 if not puzzle then
-	print("[Error] Puzzle solution not found!")
+	print("[Error] Puzzle module not found!")
 	os.exit(1)
 end
 
-if part == "1" then
+if part == "1" or part == nil then
 	answers = puzzle:part_1(input)
-elseif part == "2" then
+
+	if not answers then
+		print("[Error] Puzzle solution 1 failed, answer not found!")
+		os.exit(1)
+	end
+
+	print()
+	print("[Puzzle 1 Solution]:")
+	print()
+
+	for _, answer in pairs(answers) do
+		print(string.format("  %s", answer))
+	end
+
+	print()
+end
+
+if part == "2" or part == nil then
 	answers = puzzle:part_2(input)
+
+	if not answers then
+		print("[Error] Puzzle solution 2 failed, answer not found!")
+		os.exit(1)
+	end
+
+	print()
+	print("[Puzzle 2 Solution]:")
+	print()
+
+	for _, answer in pairs(answers) do
+		print(string.format("  %s", answer))
+	end
+
+	print()
 end
-
-if not answers then
-	print("[Error] Puzzle failed, answer not found!")
-	os.exit(1)
-end
-
-print()
-print("[Puzzle Solution]:")
-print()
-
-for _, answer in pairs(answers) do
-	print(string.format("  %s", answer))
-end
-
-print()
