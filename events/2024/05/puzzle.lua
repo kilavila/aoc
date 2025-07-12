@@ -43,7 +43,7 @@ local function check_page_number(rules, update, number, index)
 
 		for _, rule in pairs(rules) do
 			if rule == test_rule then
-				return true
+				return true, idx
 			end
 		end
 	end
@@ -81,10 +81,45 @@ function M:part_1(input)
 	return { "Sum of middle numbers from correctly ordered updates is " .. total_sum }
 end
 
-function M:part_2(input)
-	print(input)
+local function reorder_update(rules, update)
+	for index, number in pairs(update) do
+		local wrong_order, idx = check_page_number(rules, update, number, index)
 
-	return { "Solution to part 2" }
+		if wrong_order and idx then
+			local number_2 = update[idx]
+			update[idx] = number
+			update[index] = number_2
+
+			return update
+		end
+	end
+end
+
+function M:part_2(input)
+	local rules = extract_rules(input)
+	local updates = extract_updates(input)
+
+	local total_sum = 0
+
+	for _, update in pairs(updates) do
+		local correctly_ordered = check_update(rules, update)
+
+		if not correctly_ordered then
+			while true do
+				local reordered_update = reorder_update(rules, update)
+				local correctly_reordered = check_update(rules, reordered_update)
+
+				if correctly_reordered then
+					break
+				end
+			end
+
+			local mid_num_idx = ((#update - 1) / 2) + 1
+			total_sum = total_sum + update[mid_num_idx]
+		end
+	end
+
+	return { "Sum of middle numbers from incorrectly ordered updates is " .. total_sum }
 end
 
 return M
